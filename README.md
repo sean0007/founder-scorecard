@@ -9,4 +9,4 @@ Free, no-login checks for any business or idea:
 
 Based on frameworks Codie Sanchez, Alex Hormozi, and Daniel Priestley shared on The Diary of a CEO. Not affiliated with or endorsed by them or the show. Educational rules of thumb only.
 
-Live: https://founder-scorecard.vercel.app
+Live: https://fund-fix-flee.vercel.app

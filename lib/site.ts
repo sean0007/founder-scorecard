@@ -23,5 +23,5 @@ export function getSiteUrl(): string {
   if (production) return `https://${production.replace(/^https?:\/\//, "")}`;
   const vercel = process.env.VERCEL_URL?.trim();
   if (vercel) return `https://${vercel.replace(/^https?:\/\//, "")}`;
-  return "https://founder-scorecard.vercel.app";
+  return "https://fund-fix-flee.vercel.app";
 }
