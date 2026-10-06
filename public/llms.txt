@@ -32,12 +32,13 @@ Free JSON API. No key, no signup, CORS open. Every endpoint takes GET query para
   old email list reactivation estimate (low / mid / high)
 - OpenAPI 3.1 spec: https://fund-fix-flee.vercel.app/openapi.json
 - Plugin manifest: https://fund-fix-flee.vercel.app/.well-known/ai-plugin.json
-- MCP (remote, streamable HTTP, no auth), with this and 8 sibling tools: https://free-agent-tools.vercel.app/mcp
+- MCP (remote, streamable HTTP, no auth), with this and 9 sibling tools: https://free-agent-tools.vercel.app/mcp
 
 ## Disclaimer
 Educational rules of thumb only. Not financial, legal, or business advice. Based on frameworks Codie Sanchez, Alex Hormozi, and Daniel Priestley shared on The Diary of a CEO; not affiliated with or endorsed by any of them or the show. Uses only the numbers you enter.
 
 ## Other free tools by the same maker
+- Pitch Roast: https://pitch-roast.vercel.app
 - Japan Trip Brain: https://japan-trip-brain.vercel.app
 - Hotel OTA Commission Calculator: https://hotel-ota-calculator.vercel.app
 - SaaS Bill Cutter: https://saas-bill-cutter.vercel.app

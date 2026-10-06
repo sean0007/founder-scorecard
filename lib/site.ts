@@ -9,6 +9,7 @@ export const HONESTY =
   "Based on frameworks Codie Sanchez, Alex Hormozi, and Daniel Priestley shared on The Diary of a CEO. Not affiliated with or endorsed by any of them. Uses only the numbers you enter.";
 
 export const SIBLING_TOOLS = [
+  { href: "https://pitch-roast.vercel.app", label: "Pitch Roast" },
   { href: "https://japan-trip-brain.vercel.app", label: "Japan Trip Brain" },
   { href: "https://hotel-ota-calculator.vercel.app", label: "Hotel OTA Calculator" },
   { href: "https://saas-bill-cutter.vercel.app", label: "SaaS Bill Cutter" },
