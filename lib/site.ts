@@ -1,4 +1,5 @@
 export const SITE_NAME = "Founder Scorecard";
+export const PUBLIC_URL = "https://fund-fix-flee.vercel.app";
 
 export const SITE_TAGLINE =
   "Four free checks for any business idea: the MOAT score, price headroom from your close rate, whether customers fund growth, and what an old email list is worth.";
@@ -11,6 +12,7 @@ export const HONESTY =
 export const SIBLING_TOOLS = [
   { href: "https://pitch-roast.vercel.app", label: "Pitch Roast" },
   { href: "https://japan-trip-brain.vercel.app", label: "Japan Trip Brain" },
+  { href: "https://japan-tax-free-refund.vercel.app", label: "Japan Tax-Free Refund" },
   { href: "https://hotel-ota-calculator.vercel.app", label: "Hotel OTA Calculator" },
   { href: "https://saas-bill-cutter.vercel.app", label: "SaaS Bill Cutter" },
   { href: "https://ads-risk-check.vercel.app", label: "Ads Risk Check" },
@@ -23,9 +25,8 @@ export const SIBLING_TOOLS = [
 export function getSiteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (explicit) return explicit.replace(/\/$/, "");
-  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
-  if (production) return `https://${production.replace(/^https?:\/\//, "")}`;
+  if (process.env.VERCEL_ENV === "production") return PUBLIC_URL;
   const vercel = process.env.VERCEL_URL?.trim();
   if (vercel) return `https://${vercel.replace(/^https?:\/\//, "")}`;
-  return "https://fund-fix-flee.vercel.app";
+  return PUBLIC_URL;
 }

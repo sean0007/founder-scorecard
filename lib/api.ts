@@ -1,8 +1,8 @@
 import { cash, list, moat, price } from "./calc";
 import { bool, num, type Endpoint } from "./agent-api";
-import { DISCLAIMER_SHORT, HONESTY, SITE_NAME, SITE_TAGLINE } from "./site";
+import { DISCLAIMER_SHORT, HONESTY, PUBLIC_URL, SITE_NAME, SITE_TAGLINE } from "./site";
 
-export const PUBLIC_URL = "https://fund-fix-flee.vercel.app";
+export { PUBLIC_URL };
 export const API_DISCLAIMER = `${DISCLAIMER_SHORT} ${HONESTY}`;
 export const API_INFO = { title: `${SITE_NAME} API`, description: SITE_TAGLINE };
 
