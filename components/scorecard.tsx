@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { moat, price, cash, list } from "@/lib/calc";
+import { moat, price, cash, list, type MoatInputs } from "@/lib/calc";
 import { CardDisclaimer } from "@/components/card-disclaimer";
+import { ShareBar } from "@/components/share-bar";
+import { PUBLIC_URL, VERDICT_LINE, resultHeadline, resultPath } from "@/lib/share";
 
 const fmt = (n: number) => (Number.isFinite(n) ? Math.round(n).toLocaleString("en-US") : "0");
 const fx = (n: number) => (Number.isFinite(n) ? n.toFixed(1) : "0.0");
@@ -47,7 +49,7 @@ function Panel({ title, children, note }: { title: string; children: React.React
   );
 }
 
-function Result({ kicker, big, color, headline, children }: { kicker: string; big: string; color: string; headline: string; children: React.ReactNode }) {
+function Result({ kicker, big, color, headline, children, share }: { kicker: string; big: string; color: string; headline: string; children: React.ReactNode; share?: React.ReactNode }) {
   return (
     <article data-testid="result-card" className="relative flex flex-col overflow-hidden rounded-3xl border border-line bg-black/50 lg:sticky lg:top-16 lg:self-start">
       <div className="p-5 sm:p-7">
@@ -55,6 +57,7 @@ function Result({ kicker, big, color, headline, children }: { kicker: string; bi
         <h2 className={`mt-2 font-display text-5xl ${color}`}>{big}</h2>
         <p className="mt-3 text-lg font-medium text-foreground">{headline}</p>
         <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted">{children}</div>
+        {share}
       </div>
       <CardDisclaimer />
     </article>
@@ -68,10 +71,15 @@ const moatAnchors = {
   tam: { label: "TAM (market size)", help: "1 = tiny or shrinking · 10 = large, growing, already spending" },
 } as const;
 
-function MoatTool() {
-  const [s, setS] = useState({ margin: 5, operations: 5, advantage: 5, tam: 5 });
-  const [c, setC] = useState({ pain: true, money: true, suffer: true });
+export function MoatTool({ initial }: { initial?: MoatInputs }) {
+  const [s, setS] = useState(
+    initial
+      ? { margin: initial.margin, operations: initial.operations, advantage: initial.advantage, tam: initial.tam }
+      : { margin: 5, operations: 5, advantage: 5, tam: 5 },
+  );
+  const [c, setC] = useState(initial ? { pain: initial.pain, money: initial.money, suffer: initial.suffer } : { pain: true, money: true, suffer: true });
   const r = moat({ ...s, ...c });
+  const path = resultPath({ ...s, ...c });
   const color = r.verdict === "FUND IT" ? "text-teal-200" : r.verdict === "FIX IT" ? "text-amber" : "text-rose-300";
   const checks = [
     { k: "pain", label: "Measurable pain", help: "Buyers can point to a number this improves" },
@@ -107,7 +115,27 @@ function MoatTool() {
           ))}
         </ul>
       </div>
-      <Result kicker={`MOAT score ${r.total} / 40`} big={r.verdict} color={color} headline={r.verdict === "FUND IT" ? "Strong enough to put time and money in." : r.verdict === "FIX IT" ? "Worth it only if you fix the weak spot first." : "Walk away or rethink it from scratch."}>
+      <Result
+        kicker={`MOAT score ${r.total} / 40`}
+        big={r.verdict}
+        color={color}
+        headline={VERDICT_LINE[r.verdict]}
+        share={
+          <div className="mt-6 border-t border-line pt-4" data-testid="share-result">
+            <p className="text-xs text-muted">
+              Share this score. The link carries your four scores and three checks, so anyone who opens it sees the same verdict. Nothing is stored.
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-2">
+              <ShareBar url={`${PUBLIC_URL}${path}`} text={`My business idea: ${resultHeadline(r)}. Free scorecard:`} />
+              {initial ? null : (
+                <a href={path} className="text-sm text-muted underline underline-offset-2 hover:text-foreground">
+                  Open result page
+                </a>
+              )}
+            </div>
+          </div>
+        }
+      >
         <p>
           Margin {r.parts.Margin} · Operations {r.parts.Operations} · Advantage {r.parts.Advantage} · TAM {r.parts.TAM}. 30 or more is fund it, 20 to 29 is fix it, under 20 is flee it.
         </p>

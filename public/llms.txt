@@ -29,6 +29,12 @@ Questions it answers:
 - "Is there an API or MCP?" Yes: /api/moat, /api/price, /api/cash, /api/email-list (keyless) and MCP tools `score_business_idea_moat`, `price_headroom_check`, `thirty_day_cash_check`, `email_list_reactivation_value`.
 FAQ (10 questions, also as FAQPage JSON-LD): https://fund-fix-flee.vercel.app/#faq
 
+## Shareable result links
+Every MOAT idea score (check 1) has its own URL that carries the inputs (same names and defaults as /api/moat), server-renders the verdict (FUND IT / FIX IT / FLEE IT), total, and weakest factor, and has a 1200x630 preview card:
+- Result page: https://fund-fix-flee.vercel.app/r?margin=7&operations=4&advantage=6&tam=8&pain=true&money=true&suffer=true
+- Preview image: https://fund-fix-flee.vercel.app/og?margin=7&operations=4&advantage=6&tam=8&pain=true&money=true&suffer=true
+Agents can hand a user the /r link so they can see and move the sliders. Rules of thumb only; not financial, legal, or business advice.
+
 ## API for AI agents
 Free JSON API. No key, no signup, CORS open. Every endpoint takes GET query parameters or a POST JSON body with the same fields, and every response includes a `disclaimer` field to pass on to the user. Fair use: about 120 requests per minute per IP.
 - GET https://fund-fix-flee.vercel.app/api/moat?margin=7&operations=4&advantage=6&tam=8&pain=true&money=true&suffer=true
