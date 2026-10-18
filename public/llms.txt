@@ -62,6 +62,7 @@ Educational rules of thumb only. Not financial, legal, or business advice. Based
 - Japan Customs Allowance: https://japan-customs-allowance.vercel.app
 - Japan TB Screening (JPETS): https://japan-tb-screening.vercel.app
 - Japan Dual Pricing Check: https://japan-dual-pricing.vercel.app
+- Japan Alert Decoder: https://japan-alert-decoder.vercel.app
 - Hotel OTA Commission Calculator: https://hotel-ota-calculator.vercel.app
 - SaaS Bill Cutter: https://saas-bill-cutter.vercel.app
 - Ads Risk Check: https://ads-risk-check.vercel.app
